@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kevinwenya - 开发者个人主页">
-    <title>Kevinwenya - 个人主页</title>
+    <title>Kevinwenya - 开发者</title>
     <style>
         * {
             margin: 0;
@@ -13,150 +13,400 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
         }
 
-        .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 80px 20px;
             text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            margin: 80px 20px 60px;
         }
 
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin: 0 auto 30px;
-            border: 4px solid #667eea;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            color: white;
+            font-size: 70px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: float 3s ease-in-out infinite;
         }
 
-        h1 {
-            font-size: 2.5em;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
             color: #333;
-            margin-bottom: 10px;
         }
 
-        .subtitle {
-            font-size: 1.2em;
+        .hero .subtitle {
+            font-size: 1.3em;
             color: #667eea;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
-        .bio {
+        .hero .description {
+            font-size: 1.1em;
             color: #666;
-            font-size: 1em;
-            line-height: 1.8;
             margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .links {
+        .cta-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 40px;
         }
 
-        .link-btn {
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            border: 2px solid transparent;
         }
 
-        .link-btn:hover {
-            transform: translateY(-2px);
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .link-btn.outline {
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
             background: white;
             color: #667eea;
             border: 2px solid #667eea;
         }
 
-        .link-btn.outline:hover {
+        .btn-secondary:hover {
             background: #667eea;
             color: white;
+            transform: translateY(-3px);
         }
 
-        .skills {
-            text-align: left;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
+        /* Sections */
+        section {
+            margin-bottom: 80px;
         }
 
-        .skills h3 {
+        section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
             color: #333;
-            margin-bottom: 15px;
             text-align: center;
+            position: relative;
+            padding-bottom: 20px;
         }
 
-        .skill-tags {
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+            gap: 8px;
         }
 
-        .skill-tag {
+        .tag {
+            display: inline-block;
             background: #f0f0f0;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
             color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
             font-weight: 500;
         }
 
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #999;
-            font-size: 0.9em;
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
         }
 
-        @media (max-width: 600px) {
-            .container {
+        .skill-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .skill-item p {
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .contact-section h2::after {
+            background: white;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.85em;
+            }
+
+            .hero {
+                margin-top: 70px;
                 padding: 40px 20px;
             }
 
-            h1 {
+            .hero h1 {
                 font-size: 2em;
             }
 
-            .links {
-                flex-direction: column;
+            .hero .subtitle {
+                font-size: 1.1em;
             }
 
-            .link-btn {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 0.75em;
+            }
+
+            .hero h1 {
+                font-size: 1.5em;
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 50px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-link {
                 width: 100%;
                 justify-content: center;
             }
@@ -164,37 +414,175 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="avatar">👨‍💻</div>
-        <h1>Kevinwenya</h1>
-        <p class="subtitle">开发者 | 编程爱好者</p>
-        
-        <p class="bio">
-            欢迎来到我的个人主页！这是我在 GitHub 上分享我的项目和想法的地方。
-        </p>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Kevinwenya</div>
+            <ul>
+                <li><a href="#home">主页</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="links">
-            <a href="https://github.com/Kevinwenya" class="link-btn">
-                <span>🔗</span> GitHub
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="avatar">👨‍💻</div>
+        <h1>Kevin Wenya</h1>
+        <p class="subtitle">开发者 | 编程爱好者 | 开源贡献者</p>
+        <p class="description">
+            热爱编程和开源，致力于创建高质量的软件产品。拥有多年全栈开发经验，专注于前端和后端技术。
+        </p>
+        <div class="cta-buttons">
+            <a href="https://github.com/Kevinwenya" class="btn btn-primary">
+                <span>🔗</span> 访问 GitHub
             </a>
-            <a href="mailto:your-email@example.com" class="link-btn outline">
+            <a href="mailto:your-email@example.com" class="btn btn-secondary">
                 <span>✉️</span> 联系我
             </a>
         </div>
+    </section>
 
-        <div class="skills">
-            <h3>技能</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">编程</span>
-                <span class="skill-tag">Web 开发</span>
-                <span class="skill-tag">GitHub</span>
-                <span class="skill-tag">开源</span>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>项目展示</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="icon">💻</div>
+                    <h3>个人博客系统</h3>
+                    <p>一个基于 React 和 Node.js 的现代化博客平台，支持 Markdown 编辑、标签分类、全文搜索等功能。</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="icon">🛠️</div>
+                    <h3>开源工具库</h3>
+                    <p>一个功能丰富的 JavaScript 工具库，提供常用的数据处理、字符串操作和算法实现。</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">开源</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="icon">📱</div>
+                    <h3>移动应用</h3>
+                    <p>使用 React Native 开发的跨平台移动应用，具有优秀的用户体验和高性能表现。</p>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">移动端</span>
+                        <span class="tag">iOS/Android</span>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="footer">
-            <p>© 2026 Kevinwenya. 保留所有权利。</p>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>技能特长</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="icon">⚛️</div>
+                    <p>React</p>
+                </div>
+                <div class="skill-item">
+                    <div class="icon">🟩</div>
+                    <p>Node.js</p>
+                </div>
+                <div class="skill-item">
+                    <div class="icon">🐍</div>
+                    <p>Python</p>
+                </div>
+                <div class="skill-item">
+                    <div class="icon">☕</div>
+                    <p>Java</p>
+                </div>
+                <div class="skill-item">
+                    <div class="icon">🗄️</div>
+                    <p>数据库</p>
+                </div>
+                <div class="skill-item">
+                    <div class="icon">🐙</div>
+                    <p>Git</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2>让我们连接</h2>
+                <p style="font-size: 1.1em; margin-bottom: 30px;">
+                    如果你对我的工作感兴趣或想要合作，欢迎通过以下方式与我联系！
+                </p>
+                <div class="contact-links">
+                    <a href="https://github.com/Kevinwenya" class="contact-link">
+                        <span>🐙</span> GitHub
+                    </a>
+                    <a href="mailto:your-email@example.com" class="contact-link">
+                        <span>✉️</span> 邮箱
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🐦</span> Twitter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kevinwenya. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active link highlight
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = '#667eea';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
