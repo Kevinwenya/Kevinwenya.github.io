@@ -218,6 +218,15 @@ section:nth-child(even) {
     border-radius: 2px;
 }
 
+.section-subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 3rem 0 2rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
 /* About Section */
 .about-intro {
     text-align: center;
@@ -244,6 +253,21 @@ section:nth-child(even) {
     background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
 }
 
+.education-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #10b981, var(--accent-color));
+}
+
 .timeline-item {
     margin-bottom: 3rem;
     display: flex;
@@ -266,6 +290,11 @@ section:nth-child(even) {
     box-shadow: 0 0 0 4px var(--primary-color);
 }
 
+.education-timeline .timeline-marker {
+    background-color: #10b981;
+    box-shadow: 0 0 0 4px #059669;
+}
+
 .timeline-content {
     flex: 1;
     background: white;
@@ -286,10 +315,18 @@ section:nth-child(even) {
     margin-bottom: 0.5rem;
 }
 
+.education-timeline .timeline-content h3 {
+    color: #059669;
+}
+
 .position {
     color: var(--accent-color);
     font-weight: 600;
     font-size: 1.05rem;
+}
+
+.education-timeline .position {
+    color: #10b981;
 }
 
 .timeline-date {
@@ -322,6 +359,10 @@ section:nth-child(even) {
     left: 0;
     color: var(--accent-color);
     font-weight: bold;
+}
+
+.education-timeline .highlights li::before {
+    color: #10b981;
 }
 
 /* Expertise Section */
@@ -503,11 +544,19 @@ section:nth-child(even) {
         font-size: 2rem;
     }
 
+    .section-subtitle {
+        font-size: 1.3rem;
+    }
+
     section {
         padding: 50px 0;
     }
 
     .experience-timeline::before {
+        left: 0;
+    }
+
+    .education-timeline::before {
         left: 0;
     }
 
@@ -539,6 +588,10 @@ section:nth-child(even) {
 
     .section-title {
         font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
     }
 
     .nav-links {
